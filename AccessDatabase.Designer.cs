@@ -34,6 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(18, 4, 88);
             ClientSize = new Size(1042, 676);
             Name = "AccessDatabase";
             ResumeLayout(false);
