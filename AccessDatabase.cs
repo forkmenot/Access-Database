@@ -45,39 +45,81 @@ namespace AccessDatabase
 
         private void loadTSubjects_Click(object sender, EventArgs e)
         {
-            // load subject table
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            da = new OleDbDataAdapter("SELECT * FROM SubjectsEnrolled", myConn);
+            ds = new DataSet();
+            da.Fill(ds, "SubjectsEnrolled");
+            dgvDatabase.DataSource = ds.Tables["SubjectsEnrolled"];
+            myConn.Close();
         }
 
         private void loadTGrades_Click(object sender, EventArgs e)
         {
-            // load grade table
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            da = new OleDbDataAdapter("SELECT * FROM FinalGrade", myConn);
+            ds = new DataSet();
+            da.Fill(ds, "FinalGrade");
+            dgvDatabase.DataSource = ds.Tables["FinalGrade"];
+            myConn.Close();
         }
 
         private void loadQSubjects_Click(object sender, EventArgs e)
         {
-            // load query (SELECT Student.StudentID, Student.LastName, Student.FirstName, SubjectsEnrolled.CourseNum1, SubjectsEnrolled.CourseNum2, SubjectsEnrolled.CourseNum3, SubjectsEnrolled.CourseNum4, SubjectsEnrolled.CourseNum5
-            // FROM Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID;)
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
+                             SubjectsEnrolled.CourseNum1, SubjectsEnrolled.CourseNum2, SubjectsEnrolled.CourseNum3, SubjectsEnrolled.CourseNum4, SubjectsEnrolled.CourseNum5 
+                             FROM Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID";
+            da = new OleDbDataAdapter(query, myConn);
+            ds = new DataSet();
+            da.Fill(ds, "StudentSubjects");
+            dgvDatabase.DataSource = ds.Tables["StudentSubjects"];
+            myConn.Close();
         }
 
         private void loadQGrades_Click(object sender, EventArgs e)
         {
-            // load query (SELECT Student.StudentID, Student.LastName, Student.FirstName, FinalGrade.FG1, FinalGrade.FG2, FinalGrade.FG3, FinalGrade.FG4, FinalGrade.FG5
-            // FROM(Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID) INNER JOIN FinalGrade ON SubjectsEnrolled.StudentID = FinalGrade.StudentID;)
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
+                             FinalGrade.FG1, FinalGrade.FG2, FinalGrade.FG3, FinalGrade.FG4, FinalGrade.FG5 
+                             FROM (Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID) 
+                             INNER JOIN FinalGrade ON SubjectsEnrolled.StudentID = FinalGrade.StudentID";
+            da = new OleDbDataAdapter(query, myConn);
+            ds = new DataSet();
+            da.Fill(ds, "StudentGrades");
+            dgvDatabase.DataSource = ds.Tables["StudentGrades"];
+            myConn.Close();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            /*string query = "INSERT INTO Student (StudentID, LastName, FirstName, Course, YearLvl) VALUES (?, ?, ?, ?, ?)";
+            cmd = new OleDbCommand(query, myConn);
+
+            cmd.Parameters.AddWithValue("?", tbxStudentID.Text);
+            cmd.Parameters.AddWithValue("?", tbxLastName.Text);
+            cmd.Parameters.AddWithValue("?", tbxFirstName.Text);
+            cmd.Parameters.AddWithValue("?", tbxCourse.Text);
+            cmd.Parameters.AddWithValue("?", tbxYearLvl.Text);
+
+            myConn.Open();
+            cmd.ExecuteNonQuery();
+            myConn.Close();
+
+            MessageBox.Show("Record inserted successfully!");
+            loadTStudents_Click(sender, e);*/
             // depending on the loaded table/query, tbx controls will ask input to add new record
+
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // depending on the loaded table/query, the clicked row will be deleted (add cell click event)
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // depending on the loaded table/query, tbx controls will ask input to update the clicked record
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
         }
     }
 }

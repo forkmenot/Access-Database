@@ -44,6 +44,7 @@
             btnInsert = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
+            flpInformation = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgvDatabase).BeginInit();
             mstrpFile.SuspendLayout();
             SuspendLayout();
@@ -200,12 +201,20 @@
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
+            // flpInformation
+            // 
+            flpInformation.Location = new Point(8, 511);
+            flpInformation.Name = "flpInformation";
+            flpInformation.Size = new Size(860, 204);
+            flpInformation.TabIndex = 8;
+            // 
             // AccessDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 4, 88);
             ClientSize = new Size(1042, 727);
+            Controls.Add(flpInformation);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnInsert);
@@ -240,5 +249,6 @@
         private Button btnInsert;
         private Button btnDelete;
         private Button btnUpdate;
+        private FlowLayoutPanel flpInformation;
     }
 }
