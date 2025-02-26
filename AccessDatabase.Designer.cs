@@ -60,7 +60,7 @@
             // 
             // panelDGV
             // 
-            panelDGV.BackColor = Color.Black;
+            panelDGV.BackColor = Color.FromArgb(255, 18, 79);
             panelDGV.BorderStyle = BorderStyle.FixedSingle;
             panelDGV.Location = new Point(8, 42);
             panelDGV.Name = "panelDGV";
@@ -91,51 +91,51 @@
             load.DropDownItems.AddRange(new ToolStripItem[] { loadTable, loadQuery });
             load.Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             load.Name = "load";
-            load.Size = new Size(180, 24);
+            load.Size = new Size(108, 24);
             load.Text = "Load";
             // 
             // loadTable
             // 
             loadTable.DropDownItems.AddRange(new ToolStripItem[] { loadTStudents, loadTSubjects, loadTGrades });
             loadTable.Name = "loadTable";
-            loadTable.Size = new Size(180, 24);
+            loadTable.Size = new Size(114, 24);
             loadTable.Text = "Table";
             // 
             // loadTStudents
             // 
             loadTStudents.Name = "loadTStudents";
-            loadTStudents.Size = new Size(180, 24);
+            loadTStudents.Size = new Size(130, 24);
             loadTStudents.Text = "Students";
             // 
             // loadTSubjects
             // 
             loadTSubjects.Name = "loadTSubjects";
-            loadTSubjects.Size = new Size(180, 24);
+            loadTSubjects.Size = new Size(130, 24);
             loadTSubjects.Text = "Subjects";
             // 
             // loadTGrades
             // 
             loadTGrades.Name = "loadTGrades";
-            loadTGrades.Size = new Size(180, 24);
+            loadTGrades.Size = new Size(130, 24);
             loadTGrades.Text = "Grades";
             // 
             // loadQuery
             // 
             loadQuery.DropDownItems.AddRange(new ToolStripItem[] { loadQSubjects, loadQGrades });
             loadQuery.Name = "loadQuery";
-            loadQuery.Size = new Size(180, 24);
+            loadQuery.Size = new Size(114, 24);
             loadQuery.Text = "Query";
             // 
             // loadQSubjects
             // 
             loadQSubjects.Name = "loadQSubjects";
-            loadQSubjects.Size = new Size(180, 24);
+            loadQSubjects.Size = new Size(130, 24);
             loadQSubjects.Text = "Subjects";
             // 
             // loadQGrades
             // 
             loadQGrades.Name = "loadQGrades";
-            loadQGrades.Size = new Size(180, 24);
+            loadQGrades.Size = new Size(130, 24);
             loadQGrades.Text = "Grades";
             // 
             // btnConnection
@@ -149,6 +149,7 @@
             btnConnection.TabIndex = 4;
             btnConnection.Text = "CONNECTION TEST";
             btnConnection.UseVisualStyleBackColor = false;
+            btnConnection.Click += btnConnection_Click;
             // 
             // btnInsert
             // 
@@ -200,6 +201,7 @@
             Controls.Add(panelDGV);
             Controls.Add(mstrpFile);
             Name = "AccessDatabase";
+            Load += AccessDatabase_Load;
             ((System.ComponentModel.ISupportInitialize)dgvDatabase).EndInit();
             mstrpFile.ResumeLayout(false);
             mstrpFile.PerformLayout();
