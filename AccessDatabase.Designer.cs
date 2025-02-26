@@ -50,16 +50,21 @@
             // 
             // dgvDatabase
             // 
+            dgvDatabase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDatabase.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDatabase.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDatabase.BackgroundColor = Color.Black;
-            dgvDatabase.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dgvDatabase.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDatabase.Location = new Point(12, 46);
             dgvDatabase.Name = "dgvDatabase";
+            dgvDatabase.ReadOnly = true;
+            dgvDatabase.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDatabase.Size = new Size(1018, 455);
             dgvDatabase.TabIndex = 0;
             // 
             // panelDGV
             // 
+            panelDGV.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelDGV.BackColor = Color.FromArgb(255, 18, 79);
             panelDGV.BorderStyle = BorderStyle.FixedSingle;
             panelDGV.Location = new Point(8, 42);
@@ -106,18 +111,21 @@
             loadTStudents.Name = "loadTStudents";
             loadTStudents.Size = new Size(130, 24);
             loadTStudents.Text = "Students";
+            loadTStudents.Click += loadTStudents_Click;
             // 
             // loadTSubjects
             // 
             loadTSubjects.Name = "loadTSubjects";
             loadTSubjects.Size = new Size(130, 24);
             loadTSubjects.Text = "Subjects";
+            loadTSubjects.Click += loadTSubjects_Click;
             // 
             // loadTGrades
             // 
             loadTGrades.Name = "loadTGrades";
             loadTGrades.Size = new Size(130, 24);
             loadTGrades.Text = "Grades";
+            loadTGrades.Click += loadTGrades_Click;
             // 
             // loadQuery
             // 
@@ -131,12 +139,14 @@
             loadQSubjects.Name = "loadQSubjects";
             loadQSubjects.Size = new Size(130, 24);
             loadQSubjects.Text = "Subjects";
+            loadQSubjects.Click += loadQSubjects_Click;
             // 
             // loadQGrades
             // 
             loadQGrades.Name = "loadQGrades";
             loadQGrades.Size = new Size(130, 24);
             loadQGrades.Text = "Grades";
+            loadQGrades.Click += loadQGrades_Click;
             // 
             // btnConnection
             // 
@@ -162,6 +172,7 @@
             btnInsert.TabIndex = 5;
             btnInsert.Text = "INSERT";
             btnInsert.UseVisualStyleBackColor = false;
+            btnInsert.Click += btnInsert_Click;
             // 
             // btnDelete
             // 
@@ -174,6 +185,7 @@
             btnDelete.TabIndex = 6;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
@@ -186,6 +198,7 @@
             btnUpdate.TabIndex = 7;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // AccessDatabase
             // 
