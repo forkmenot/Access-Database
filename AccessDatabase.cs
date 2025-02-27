@@ -71,6 +71,9 @@ namespace AccessDatabase
             da.Fill(ds, "FinalGrade");
             dgvDatabase.DataSource = ds.Tables["FinalGrade"];
             myConn.Close();
+
+            flpInputs.Controls.Clear();
+            flpInputs.Controls.Add(new TGrades());
         }
 
         private void loadQSubjects_Click(object sender, EventArgs e)
@@ -150,6 +153,28 @@ namespace AccessDatabase
                     subjectControl.ClearControls();
                 }
             }
+            else if (flpInputs.Controls[0] is TGrades gradeControl)
+            {
+                string query = "INSERT INTO FinalGrade (StudentID, FG1, FG2, FG3, FG4, FG5) VALUES (@id, @g1, @g2, @g3, @g4, @g5)";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@id", gradeControl.StudentID);
+                    cmd.Parameters.AddWithValue("@g1", gradeControl.FinalGrade1);
+                    cmd.Parameters.AddWithValue("@g2", gradeControl.FinalGrade2);
+                    cmd.Parameters.AddWithValue("@g3", gradeControl.FinalGrade3);
+                    cmd.Parameters.AddWithValue("@g4", gradeControl.FinalGrade4);
+                    cmd.Parameters.AddWithValue("@g5", gradeControl.FinalGrade5);
+
+                    myConn.Open();
+                    cmd.ExecuteNonQuery();
+                    myConn.Close();
+
+                    MessageBox.Show("Grade record inserted!");
+                    loadTGrades_Click(sender, e);
+                    gradeControl.ClearControls();
+                }
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -198,6 +223,27 @@ namespace AccessDatabase
                     loadTSubjects_Click(sender, e);
                 }
             }
+            else if (flpInputs.Controls[0] is TGrades gradeControl)
+            {
+                string query = "UPDATE FinalGrade SET FG1 = @g1, FG2 = @g2, FG3 = @g3, FG4 = @g4, FG5 = @g5 WHERE StudentID = @id";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@g1", gradeControl.FinalGrade1);
+                    cmd.Parameters.AddWithValue("@g2", gradeControl.FinalGrade2);
+                    cmd.Parameters.AddWithValue("@g3", gradeControl.FinalGrade3);
+                    cmd.Parameters.AddWithValue("@g4", gradeControl.FinalGrade4);
+                    cmd.Parameters.AddWithValue("@g5", gradeControl.FinalGrade5);
+                    cmd.Parameters.AddWithValue("@id", gradeControl.StudentID);
+
+                    myConn.Open();
+                    cmd.ExecuteNonQuery();
+                    myConn.Close();
+
+                    MessageBox.Show("Grade record updated!");
+                    loadTGrades_Click(sender, e);
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -227,7 +273,7 @@ namespace AccessDatabase
             }
             else if (flpInputs.Controls[0] is TSubjects subjectControl)
             {
-                if (MessageBox.Show("Are you sure you want to delete this subject?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     string query = "DELETE FROM SubjectsEnrolled WHERE StudentID = @id";
 
@@ -242,6 +288,26 @@ namespace AccessDatabase
                         MessageBox.Show("Subject record deleted!");
                         loadTSubjects_Click(sender, e);
                         subjectControl.ClearControls();
+                    }
+                }
+            }
+            else if (flpInputs.Controls[0] is TGrades gradeControl)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM FinalGrade WHERE StudentID = @id";
+
+                    using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", gradeControl.StudentID);
+
+                        myConn.Open();
+                        cmd.ExecuteNonQuery();
+                        myConn.Close();
+
+                        MessageBox.Show("Grade record deleted!");
+                        loadTGrades_Click(sender, e);
+                        gradeControl.ClearControls();
                     }
                 }
             }
@@ -269,6 +335,17 @@ namespace AccessDatabase
                 subjectControl.CourseNum3 = row.Cells["CourseNum3"].Value.ToString();
                 subjectControl.CourseNum4 = row.Cells["CourseNum4"].Value.ToString();
                 subjectControl.CourseNum5 = row.Cells["CourseNum5"].Value.ToString();
+            }
+            else if (e.RowIndex >= 0 && flpInputs.Controls[0] is TGrades gradeControl)
+            {
+                DataGridViewRow row = dgvDatabase.Rows[e.RowIndex];
+
+                gradeControl.StudentID = row.Cells["StudentID"].Value.ToString();
+                gradeControl.FinalGrade1 = row.Cells["FG1"].Value.ToString();
+                gradeControl.FinalGrade2 = row.Cells["FG2"].Value.ToString();
+                gradeControl.FinalGrade3 = row.Cells["FG3"].Value.ToString();
+                gradeControl.FinalGrade4 = row.Cells["FG4"].Value.ToString();
+                gradeControl.FinalGrade5 = row.Cells["FG5"].Value.ToString();
             }
         }
     }

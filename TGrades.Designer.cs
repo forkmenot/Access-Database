@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tbxCourseNum5 = new TextBox();
+            tbxFinalGrade5 = new TextBox();
             lblFG5 = new Label();
-            tbxCourseNum4 = new TextBox();
-            tbxCourseNum3 = new TextBox();
+            tbxFinalGrade4 = new TextBox();
+            tbxFinalGrade3 = new TextBox();
             tbxFinalGrade2 = new TextBox();
             tbxFinalGrade1 = new TextBox();
             tbxStudentID = new TextBox();
@@ -42,13 +42,13 @@
             lblID = new Label();
             SuspendLayout();
             // 
-            // tbxCourseNum5
+            // tbxFinalGrade5
             // 
-            tbxCourseNum5.Font = new Font("Arial Narrow", 12F);
-            tbxCourseNum5.Location = new Point(509, 136);
-            tbxCourseNum5.Name = "tbxCourseNum5";
-            tbxCourseNum5.Size = new Size(156, 26);
-            tbxCourseNum5.TabIndex = 33;
+            tbxFinalGrade5.Font = new Font("Arial Narrow", 12F);
+            tbxFinalGrade5.Location = new Point(509, 136);
+            tbxFinalGrade5.Name = "tbxFinalGrade5";
+            tbxFinalGrade5.Size = new Size(156, 26);
+            tbxFinalGrade5.TabIndex = 33;
             // 
             // lblFG5
             // 
@@ -61,21 +61,21 @@
             lblFG5.TabIndex = 32;
             lblFG5.Text = "FINAL GRADE 5";
             // 
-            // tbxCourseNum4
+            // tbxFinalGrade4
             // 
-            tbxCourseNum4.Font = new Font("Arial Narrow", 12F);
-            tbxCourseNum4.Location = new Point(509, 101);
-            tbxCourseNum4.Name = "tbxCourseNum4";
-            tbxCourseNum4.Size = new Size(156, 26);
-            tbxCourseNum4.TabIndex = 31;
+            tbxFinalGrade4.Font = new Font("Arial Narrow", 12F);
+            tbxFinalGrade4.Location = new Point(509, 101);
+            tbxFinalGrade4.Name = "tbxFinalGrade4";
+            tbxFinalGrade4.Size = new Size(156, 26);
+            tbxFinalGrade4.TabIndex = 31;
             // 
-            // tbxCourseNum3
+            // tbxFinalGrade3
             // 
-            tbxCourseNum3.Font = new Font("Arial Narrow", 12F);
-            tbxCourseNum3.Location = new Point(509, 66);
-            tbxCourseNum3.Name = "tbxCourseNum3";
-            tbxCourseNum3.Size = new Size(156, 26);
-            tbxCourseNum3.TabIndex = 30;
+            tbxFinalGrade3.Font = new Font("Arial Narrow", 12F);
+            tbxFinalGrade3.Location = new Point(509, 66);
+            tbxFinalGrade3.Name = "tbxFinalGrade3";
+            tbxFinalGrade3.Size = new Size(156, 26);
+            tbxFinalGrade3.TabIndex = 30;
             // 
             // tbxFinalGrade2
             // 
@@ -161,10 +161,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 4, 88);
-            Controls.Add(tbxCourseNum5);
+            Controls.Add(tbxFinalGrade5);
             Controls.Add(lblFG5);
-            Controls.Add(tbxCourseNum4);
-            Controls.Add(tbxCourseNum3);
+            Controls.Add(tbxFinalGrade4);
+            Controls.Add(tbxFinalGrade3);
             Controls.Add(tbxFinalGrade2);
             Controls.Add(tbxFinalGrade1);
             Controls.Add(tbxStudentID);
@@ -181,10 +181,10 @@
 
         #endregion
 
-        private TextBox tbxCourseNum5;
+        private TextBox tbxFinalGrade5;
         private Label lblFG5;
-        private TextBox tbxCourseNum4;
-        private TextBox tbxCourseNum3;
+        private TextBox tbxFinalGrade4;
+        private TextBox tbxFinalGrade3;
         private TextBox tbxFinalGrade2;
         private TextBox tbxFinalGrade1;
         private TextBox tbxStudentID;
