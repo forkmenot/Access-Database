@@ -33,13 +33,13 @@
             tbxCourseNum2 = new TextBox();
             tbxCourseNum1 = new TextBox();
             tbxStudentID = new TextBox();
-            lblCN5 = new Label();
             lblCN4 = new Label();
+            lblCN3 = new Label();
             lblCN2 = new Label();
             lblCN1 = new Label();
             lblID = new Label();
             tbxCourseNum5 = new TextBox();
-            lblCN3 = new Label();
+            lblCN5 = new Label();
             SuspendLayout();
             // 
             // tbxCourseNum4
@@ -79,30 +79,30 @@
             tbxStudentID.Font = new Font("Arial Narrow", 12F);
             tbxStudentID.Location = new Point(122, 36);
             tbxStudentID.Name = "tbxStudentID";
-            tbxStudentID.Size = new Size(156, 26);
+            tbxStudentID.Size = new Size(204, 26);
             tbxStudentID.TabIndex = 15;
-            // 
-            // lblCN5
-            // 
-            lblCN5.AutoSize = true;
-            lblCN5.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
-            lblCN5.ForeColor = Color.White;
-            lblCN5.Location = new Point(410, 104);
-            lblCN5.Name = "lblCN5";
-            lblCN5.Size = new Size(135, 20);
-            lblCN5.TabIndex = 14;
-            lblCN5.Text = "COURSE NUMBER 4";
             // 
             // lblCN4
             // 
             lblCN4.AutoSize = true;
             lblCN4.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblCN4.ForeColor = Color.White;
-            lblCN4.Location = new Point(410, 69);
+            lblCN4.Location = new Point(410, 104);
             lblCN4.Name = "lblCN4";
             lblCN4.Size = new Size(135, 20);
-            lblCN4.TabIndex = 13;
-            lblCN4.Text = "COURSE NUMBER 3";
+            lblCN4.TabIndex = 14;
+            lblCN4.Text = "COURSE NUMBER 4";
+            // 
+            // lblCN3
+            // 
+            lblCN3.AutoSize = true;
+            lblCN3.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
+            lblCN3.ForeColor = Color.White;
+            lblCN3.Location = new Point(410, 69);
+            lblCN3.Name = "lblCN3";
+            lblCN3.Size = new Size(135, 20);
+            lblCN3.TabIndex = 13;
+            lblCN3.Text = "COURSE NUMBER 3";
             // 
             // lblCN2
             // 
@@ -145,16 +145,16 @@
             tbxCourseNum5.Size = new Size(156, 26);
             tbxCourseNum5.TabIndex = 21;
             // 
-            // lblCN3
+            // lblCN5
             // 
-            lblCN3.AutoSize = true;
-            lblCN3.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
-            lblCN3.ForeColor = Color.White;
-            lblCN3.Location = new Point(410, 139);
-            lblCN3.Name = "lblCN3";
-            lblCN3.Size = new Size(135, 20);
-            lblCN3.TabIndex = 20;
-            lblCN3.Text = "COURSE NUMBER 5";
+            lblCN5.AutoSize = true;
+            lblCN5.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
+            lblCN5.ForeColor = Color.White;
+            lblCN5.Location = new Point(410, 139);
+            lblCN5.Name = "lblCN5";
+            lblCN5.Size = new Size(135, 20);
+            lblCN5.TabIndex = 20;
+            lblCN5.Text = "COURSE NUMBER 5";
             // 
             // TSubjects
             // 
@@ -162,14 +162,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 4, 88);
             Controls.Add(tbxCourseNum5);
-            Controls.Add(lblCN3);
+            Controls.Add(lblCN5);
             Controls.Add(tbxCourseNum4);
             Controls.Add(tbxCourseNum3);
             Controls.Add(tbxCourseNum2);
             Controls.Add(tbxCourseNum1);
             Controls.Add(tbxStudentID);
-            Controls.Add(lblCN5);
             Controls.Add(lblCN4);
+            Controls.Add(lblCN3);
             Controls.Add(lblCN2);
             Controls.Add(lblCN1);
             Controls.Add(lblID);
@@ -186,12 +186,12 @@
         private TextBox tbxCourseNum2;
         private TextBox tbxCourseNum1;
         private TextBox tbxStudentID;
-        private Label lblCN5;
         private Label lblCN4;
+        private Label lblCN3;
         private Label lblCN2;
         private Label lblCN1;
         private Label lblID;
         private TextBox tbxCourseNum5;
-        private Label lblCN3;
+        private Label lblCN5;
     }
 }
