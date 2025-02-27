@@ -16,5 +16,22 @@ namespace AccessDatabase
         {
             InitializeComponent();
         }
+
+        public string StudentID { get => tbxStudentID.Text; set => tbxStudentID.Text = value; }
+        public string CourseNum1 { get => tbxCourseNum1.Text; set => tbxCourseNum1.Text = value; }
+        public string CourseNum2 { get => tbxCourseNum2.Text; set => tbxCourseNum2.Text = value; }
+        public string CourseNum3 { get => tbxCourseNum3.Text; set => tbxCourseNum3.Text = value; }
+        public string CourseNum4 { get => tbxCourseNum4.Text; set => tbxCourseNum4.Text = value; }
+        public string CourseNum5 { get => tbxCourseNum5.Text; set => tbxCourseNum5.Text = value; }
+
+        public void ClearControls()
+        {
+            tbxStudentID.Clear();
+            tbxCourseNum1.Clear();
+            tbxCourseNum2.Clear();
+            tbxCourseNum3.Clear();
+            tbxCourseNum4.Clear();
+            tbxCourseNum5.Clear();
+        }
     }
 }

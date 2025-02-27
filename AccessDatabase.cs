@@ -57,6 +57,9 @@ namespace AccessDatabase
             da.Fill(ds, "SubjectsEnrolled");
             dgvDatabase.DataSource = ds.Tables["SubjectsEnrolled"];
             myConn.Close();
+
+            flpInputs.Controls.Clear();
+            flpInputs.Controls.Add(new TSubjects());
         }
 
         private void loadTGrades_Click(object sender, EventArgs e)
@@ -125,6 +128,28 @@ namespace AccessDatabase
                     studentControl.ClearControls();
                 }
             }
+            else if (flpInputs.Controls[0] is TSubjects subjectControl)
+            {
+                string query = "INSERT INTO SubjectsEnrolled (StudentID, CourseNum1, CourseNum2, CourseNum3, CourseNum4, CourseNum5) VALUES (@id, @c1, @c2, @c3, @c4, @c5)";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@id", subjectControl.StudentID);
+                    cmd.Parameters.AddWithValue("@c1", subjectControl.CourseNum1);
+                    cmd.Parameters.AddWithValue("@c2", subjectControl.CourseNum2);
+                    cmd.Parameters.AddWithValue("@c3", subjectControl.CourseNum3);
+                    cmd.Parameters.AddWithValue("@c4", subjectControl.CourseNum4);
+                    cmd.Parameters.AddWithValue("@c5", subjectControl.CourseNum5);
+
+                    myConn.Open();
+                    cmd.ExecuteNonQuery();
+                    myConn.Close();
+
+                    MessageBox.Show("Subject record inserted!");
+                    loadTSubjects_Click(sender, e);
+                    subjectControl.ClearControls();
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -149,6 +174,26 @@ namespace AccessDatabase
                         MessageBox.Show("Student record deleted!");
                         loadTStudents_Click(sender, e);
                         studentControl.ClearControls();
+                    }
+                }
+            }
+            else if (flpInputs.Controls[0] is TSubjects subjectControl)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this subject?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM SubjectsEnrolled WHERE StudentID = @id";
+
+                    using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", subjectControl.StudentID);
+
+                        myConn.Open();
+                        cmd.ExecuteNonQuery();
+                        myConn.Close();
+
+                        MessageBox.Show("Subject record deleted!");
+                        loadTSubjects_Click(sender, e);
+                        subjectControl.ClearControls();
                     }
                 }
             }
@@ -179,6 +224,27 @@ namespace AccessDatabase
                     loadTStudents_Click(sender, e);
                 }
             }
+            else if (flpInputs.Controls[0] is TSubjects subjectControl)
+            {
+                string query = "UPDATE SubjectsEnrolled SET CourseNum1 = @c1, CourseNum2 = @c2, CourseNum3 = @c3, CourseNum4 = @c4, CourseNum5 = @c5 WHERE StudentID = @id";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@c1", subjectControl.CourseNum1);
+                    cmd.Parameters.AddWithValue("@c2", subjectControl.CourseNum2);
+                    cmd.Parameters.AddWithValue("@c3", subjectControl.CourseNum3);
+                    cmd.Parameters.AddWithValue("@c4", subjectControl.CourseNum4);
+                    cmd.Parameters.AddWithValue("@c5", subjectControl.CourseNum5);
+                    cmd.Parameters.AddWithValue("@id", subjectControl.StudentID);
+
+                    myConn.Open();
+                    cmd.ExecuteNonQuery();
+                    myConn.Close();
+
+                    MessageBox.Show("Subject record updated!");
+                    loadTSubjects_Click(sender, e);
+                }
+            }
         }
 
         private void dgvDatabase_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -192,6 +258,17 @@ namespace AccessDatabase
                 studentControl.FirstName = row.Cells["FirstName"].Value.ToString();
                 studentControl.Course = row.Cells["Course"].Value.ToString();
                 studentControl.YearLevel = row.Cells["YearLevel"].Value.ToString();
+            }
+            else if (e.RowIndex >= 0 && flpInputs.Controls[0] is TSubjects subjectControl)
+            {
+                DataGridViewRow row = dgvDatabase.Rows[e.RowIndex];
+
+                subjectControl.StudentID = row.Cells["StudentID"].Value.ToString();
+                subjectControl.CourseNum1 = row.Cells["CourseNum1"].Value.ToString();
+                subjectControl.CourseNum2 = row.Cells["CourseNum2"].Value.ToString();
+                subjectControl.CourseNum3 = row.Cells["CourseNum3"].Value.ToString();
+                subjectControl.CourseNum4 = row.Cells["CourseNum4"].Value.ToString();
+                subjectControl.CourseNum5 = row.Cells["CourseNum5"].Value.ToString();
             }
         }
     }
