@@ -45,7 +45,7 @@
             // tbxCourse5
             // 
             tbxCourse5.Font = new Font("Arial Narrow", 12F);
-            tbxCourse5.Location = new Point(508, 136);
+            tbxCourse5.Location = new Point(556, 136);
             tbxCourse5.Name = "tbxCourse5";
             tbxCourse5.Size = new Size(156, 26);
             tbxCourse5.TabIndex = 19;
@@ -53,7 +53,7 @@
             // tbxCourse4
             // 
             tbxCourse4.Font = new Font("Arial Narrow", 12F);
-            tbxCourse4.Location = new Point(508, 101);
+            tbxCourse4.Location = new Point(556, 101);
             tbxCourse4.Name = "tbxCourse4";
             tbxCourse4.Size = new Size(156, 26);
             tbxCourse4.TabIndex = 18;
@@ -87,7 +87,7 @@
             lblCN5.AutoSize = true;
             lblCN5.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblCN5.ForeColor = Color.White;
-            lblCN5.Location = new Point(362, 139);
+            lblCN5.Location = new Point(410, 139);
             lblCN5.Name = "lblCN5";
             lblCN5.Size = new Size(135, 20);
             lblCN5.TabIndex = 14;
@@ -98,7 +98,7 @@
             lblCN4.AutoSize = true;
             lblCN4.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblCN4.ForeColor = Color.White;
-            lblCN4.Location = new Point(362, 104);
+            lblCN4.Location = new Point(410, 104);
             lblCN4.Name = "lblCN4";
             lblCN4.Size = new Size(135, 20);
             lblCN4.TabIndex = 13;
@@ -140,7 +140,7 @@
             // tbxCourse3
             // 
             tbxCourse3.Font = new Font("Arial Narrow", 12F);
-            tbxCourse3.Location = new Point(508, 66);
+            tbxCourse3.Location = new Point(556, 66);
             tbxCourse3.Name = "tbxCourse3";
             tbxCourse3.Size = new Size(156, 26);
             tbxCourse3.TabIndex = 21;
@@ -150,7 +150,7 @@
             lblCN3.AutoSize = true;
             lblCN3.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblCN3.ForeColor = Color.White;
-            lblCN3.Location = new Point(362, 69);
+            lblCN3.Location = new Point(410, 69);
             lblCN3.Name = "lblCN3";
             lblCN3.Size = new Size(135, 20);
             lblCN3.TabIndex = 20;
