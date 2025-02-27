@@ -120,8 +120,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Student Record Inserted!");
-
+                    MessageBox.Show("Student record inserted!");
                     loadTStudents_Click(sender, e);
                     studentControl.ClearControls();
                 }
@@ -129,6 +128,33 @@ namespace AccessDatabase
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+
+            if (flpInputs.Controls[0] is TStudents studentControl)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM Student WHERE StudentID = @id";
+
+                    using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", studentControl.StudentID);
+
+                        myConn.Open();
+                        cmd.ExecuteNonQuery();
+                        myConn.Close();
+
+                        MessageBox.Show("Student record deleted!");
+                        loadTStudents_Click(sender, e);
+                        studentControl.ClearControls();
+                    }
+                }
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
@@ -149,35 +175,8 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Student Record Updated!");
+                    MessageBox.Show("Student record updated!");
                     loadTStudents_Click(sender, e);
-                }
-            }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
-
-            if (flpInputs.Controls[0] is TStudents studentControl)
-            {
-                if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    string query = "DELETE FROM Student WHERE StudentID = @id";
-
-                    using (OleDbCommand cmd = new OleDbCommand(query, myConn))
-                    {
-                        cmd.Parameters.AddWithValue("@id", studentControl.StudentID);
-
-                        myConn.Open();
-                        cmd.ExecuteNonQuery();
-                        myConn.Close();
-
-                        MessageBox.Show("Student Record Deleted!");
-                        loadTStudents_Click(sender, e);
-                        studentControl.ClearControls();
-                    }
                 }
             }
         }

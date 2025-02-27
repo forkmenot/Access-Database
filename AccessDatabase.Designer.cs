@@ -180,10 +180,10 @@
             // 
             btnDelete.BackColor = Color.FromArgb(255, 0, 160);
             btnDelete.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(944, 589);
+            btnDelete.Location = new Point(848, 655);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(5);
-            btnDelete.Size = new Size(90, 60);
+            btnDelete.Size = new Size(186, 60);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
@@ -193,10 +193,10 @@
             // 
             btnUpdate.BackColor = Color.FromArgb(255, 0, 160);
             btnUpdate.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUpdate.Location = new Point(848, 655);
+            btnUpdate.Location = new Point(944, 589);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Padding = new Padding(5);
-            btnUpdate.Size = new Size(186, 60);
+            btnUpdate.Size = new Size(90, 60);
             btnUpdate.TabIndex = 7;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = false;
