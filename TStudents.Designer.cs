@@ -32,7 +32,7 @@
             lblLN = new Label();
             lblFN = new Label();
             lblC = new Label();
-            tbxYL = new Label();
+            lnYL = new Label();
             tbxStudentID = new TextBox();
             tbxLastName = new TextBox();
             tbxFirstName = new TextBox();
@@ -84,16 +84,16 @@
             lblC.TabIndex = 3;
             lblC.Text = "COURSE";
             // 
-            // tbxYL
+            // lnYL
             // 
-            tbxYL.AutoSize = true;
-            tbxYL.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
-            tbxYL.ForeColor = Color.White;
-            tbxYL.Location = new Point(362, 139);
-            tbxYL.Name = "tbxYL";
-            tbxYL.Size = new Size(91, 20);
-            tbxYL.TabIndex = 4;
-            tbxYL.Text = "YEAR LEVEL";
+            lnYL.AutoSize = true;
+            lnYL.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
+            lnYL.ForeColor = Color.White;
+            lnYL.Location = new Point(362, 139);
+            lnYL.Name = "lnYL";
+            lnYL.Size = new Size(91, 20);
+            lnYL.TabIndex = 4;
+            lnYL.Text = "YEAR LEVEL";
             // 
             // tbxStudentID
             // 
@@ -145,7 +145,7 @@
             Controls.Add(tbxFirstName);
             Controls.Add(tbxLastName);
             Controls.Add(tbxStudentID);
-            Controls.Add(tbxYL);
+            Controls.Add(lnYL);
             Controls.Add(lblC);
             Controls.Add(lblFN);
             Controls.Add(lblLN);
@@ -162,7 +162,7 @@
         private Label lblLN;
         private Label lblFN;
         private Label lblC;
-        private Label tbxYL;
+        private Label lnYL;
         private TextBox tbxStudentID;
         private TextBox tbxLastName;
         private TextBox tbxFirstName;
