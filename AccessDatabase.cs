@@ -26,7 +26,8 @@ namespace AccessDatabase
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
             ds = new DataSet();
             myConn.Open();
             MessageBox.Show("Connected successfully!");
@@ -35,7 +36,8 @@ namespace AccessDatabase
 
         private void loadTStudents_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
             da = new OleDbDataAdapter("SELECT * FROM Student", myConn);
             ds = new DataSet();
             da.Fill(ds, "Student");
@@ -48,7 +50,8 @@ namespace AccessDatabase
 
         private void loadTSubjects_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
             da = new OleDbDataAdapter("SELECT * FROM SubjectsEnrolled", myConn);
             ds = new DataSet();
             da.Fill(ds, "SubjectsEnrolled");
@@ -58,7 +61,8 @@ namespace AccessDatabase
 
         private void loadTGrades_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
             da = new OleDbDataAdapter("SELECT * FROM FinalGrade", myConn);
             ds = new DataSet();
             da.Fill(ds, "FinalGrade");
@@ -68,7 +72,8 @@ namespace AccessDatabase
 
         private void loadQSubjects_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              SubjectsEnrolled.CourseNum1, SubjectsEnrolled.CourseNum2, SubjectsEnrolled.CourseNum3, SubjectsEnrolled.CourseNum4, SubjectsEnrolled.CourseNum5 
                              FROM Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID";
@@ -81,7 +86,8 @@ namespace AccessDatabase
 
         private void loadQGrades_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              FinalGrade.FG1, FinalGrade.FG2, FinalGrade.FG3, FinalGrade.FG4, FinalGrade.FG5 
                              FROM (Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID) 
@@ -95,7 +101,8 @@ namespace AccessDatabase
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
@@ -113,7 +120,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Student Inserted!");
+                    MessageBox.Show("Student Record Inserted!");
 
                     loadTStudents_Click(sender, e);
                     studentControl.ClearControls();
@@ -123,12 +130,56 @@ namespace AccessDatabase
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+
+            if (flpInputs.Controls[0] is TStudents studentControl)
+            {
+                string query = "UPDATE Student SET LastName = @last, FirstName = @first, Course = @course, YearLevel = @year WHERE StudentID = @id";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@last", studentControl.LastName);
+                    cmd.Parameters.AddWithValue("@first", studentControl.FirstName);
+                    cmd.Parameters.AddWithValue("@course", studentControl.Course);
+                    cmd.Parameters.AddWithValue("@year", studentControl.YearLevel);
+                    cmd.Parameters.AddWithValue("@id", studentControl.StudentID);
+
+                    myConn.Open();
+                    cmd.ExecuteNonQuery();
+                    myConn.Close();
+
+                    MessageBox.Show("Student Record Updated!");
+                    loadTStudents_Click(sender, e);
+                }
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+
+            if (flpInputs.Controls[0] is TStudents studentControl)
+            {
+                if (MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM Student WHERE StudentID = @id";
+
+                    using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", studentControl.StudentID);
+
+                        myConn.Open();
+                        cmd.ExecuteNonQuery();
+                        myConn.Close();
+
+                        MessageBox.Show("Student Record Deleted!");
+                        loadTStudents_Click(sender, e);
+                        studentControl.ClearControls();
+                    }
+                }
+            }
         }
 
         private void dgvDatabase_CellClick(object sender, DataGridViewCellEventArgs e)

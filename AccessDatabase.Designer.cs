@@ -167,10 +167,10 @@
             // 
             btnInsert.BackColor = Color.FromArgb(255, 0, 160);
             btnInsert.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInsert.Location = new Point(848, 563);
+            btnInsert.Location = new Point(848, 589);
             btnInsert.Name = "btnInsert";
             btnInsert.Padding = new Padding(5);
-            btnInsert.Size = new Size(90, 73);
+            btnInsert.Size = new Size(90, 60);
             btnInsert.TabIndex = 5;
             btnInsert.Text = "INSERT";
             btnInsert.UseVisualStyleBackColor = false;
@@ -180,10 +180,10 @@
             // 
             btnDelete.BackColor = Color.FromArgb(255, 0, 160);
             btnDelete.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(944, 563);
+            btnDelete.Location = new Point(944, 589);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(5);
-            btnDelete.Size = new Size(90, 73);
+            btnDelete.Size = new Size(90, 60);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
@@ -193,10 +193,10 @@
             // 
             btnUpdate.BackColor = Color.FromArgb(255, 0, 160);
             btnUpdate.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUpdate.Location = new Point(848, 642);
+            btnUpdate.Location = new Point(848, 655);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Padding = new Padding(5);
-            btnUpdate.Size = new Size(186, 73);
+            btnUpdate.Size = new Size(186, 60);
             btnUpdate.TabIndex = 7;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = false;
