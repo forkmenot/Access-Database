@@ -26,8 +26,7 @@ namespace AccessDatabase
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             ds = new DataSet();
             myConn.Open();
             MessageBox.Show("Connected successfully!");
@@ -36,8 +35,9 @@ namespace AccessDatabase
 
         private void loadTStudents_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            flpInputs.Visible = true;
+
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             da = new OleDbDataAdapter("SELECT * FROM Student", myConn);
             ds = new DataSet();
             da.Fill(ds, "Student");
@@ -50,8 +50,9 @@ namespace AccessDatabase
 
         private void loadTSubjects_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            flpInputs.Visible = true;
+
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             da = new OleDbDataAdapter("SELECT * FROM SubjectsEnrolled", myConn);
             ds = new DataSet();
             da.Fill(ds, "SubjectsEnrolled");
@@ -64,8 +65,9 @@ namespace AccessDatabase
 
         private void loadTGrades_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            flpInputs.Visible = true;
+
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             da = new OleDbDataAdapter("SELECT * FROM FinalGrade", myConn);
             ds = new DataSet();
             da.Fill(ds, "FinalGrade");
@@ -78,8 +80,9 @@ namespace AccessDatabase
 
         private void loadQSubjects_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            flpInputs.Visible = false;
+
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              SubjectsEnrolled.CourseNum1, SubjectsEnrolled.CourseNum2, SubjectsEnrolled.CourseNum3, SubjectsEnrolled.CourseNum4, SubjectsEnrolled.CourseNum5 
                              FROM Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID";
@@ -92,8 +95,9 @@ namespace AccessDatabase
 
         private void loadQGrades_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            flpInputs.Visible = false;
+
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              FinalGrade.FG1, FinalGrade.FG2, FinalGrade.FG3, FinalGrade.FG4, FinalGrade.FG5 
                              FROM (Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID) 
@@ -107,8 +111,7 @@ namespace AccessDatabase
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
@@ -179,8 +182,7 @@ namespace AccessDatabase
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
@@ -248,8 +250,7 @@ namespace AccessDatabase
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\MS_Access\\SchoolDatabaseX.accdb");
+            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
