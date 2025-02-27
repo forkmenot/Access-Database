@@ -20,8 +20,8 @@ namespace AccessDatabase
 
         private void AccessDatabase_Load(object sender, EventArgs e)
         {
-            dgvDatabase.DefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular);
-            dgvDatabase.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 11.25F, FontStyle.Regular);
+            dgvDatabase.DefaultCellStyle.Font = new Font("Arial Narrow", 12F, FontStyle.Regular);
+            dgvDatabase.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 12F, FontStyle.Regular);
         }
 
         private void btnConnection_Click(object sender, EventArgs e)
@@ -41,6 +41,9 @@ namespace AccessDatabase
             da.Fill(ds, "Student");
             dgvDatabase.DataSource = ds.Tables["Student"];
             myConn.Close();
+
+            flpInputs.Controls.Clear();
+            flpInputs.Controls.Add(new TStudents());
         }
 
         private void loadTSubjects_Click(object sender, EventArgs e)
@@ -92,24 +95,30 @@ namespace AccessDatabase
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            /*string query = "INSERT INTO Student (StudentID, LastName, FirstName, Course, YearLvl) VALUES (?, ?, ?, ?, ?)";
-            cmd = new OleDbCommand(query, myConn);
-
-            cmd.Parameters.AddWithValue("?", tbxStudentID.Text);
-            cmd.Parameters.AddWithValue("?", tbxLastName.Text);
-            cmd.Parameters.AddWithValue("?", tbxFirstName.Text);
-            cmd.Parameters.AddWithValue("?", tbxCourse.Text);
-            cmd.Parameters.AddWithValue("?", tbxYearLvl.Text);
-
-            myConn.Open();
-            cmd.ExecuteNonQuery();
-            myConn.Close();
-
-            MessageBox.Show("Record inserted successfully!");
-            loadTStudents_Click(sender, e);*/
-            // depending on the loaded table/query, tbx controls will ask input to add new record
-
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+
+            if (flpInputs.Controls[0] is TStudents studentControl)
+            {
+                string query = "INSERT INTO Student (StudentID, LastName, FirstName, Course, YearLevel) VALUES (@id, @last, @first, @course, @year)";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@id", studentControl.StudentID);
+                    cmd.Parameters.AddWithValue("@last", studentControl.LastName);
+                    cmd.Parameters.AddWithValue("@first", studentControl.FirstName);
+                    cmd.Parameters.AddWithValue("@course", studentControl.Course);
+                    cmd.Parameters.AddWithValue("@year", studentControl.YearLevel);
+
+                    myConn.Open();
+                    cmd.ExecuteNonQuery();
+                    myConn.Close();
+
+                    MessageBox.Show("Student Inserted!");
+
+                    loadTStudents_Click(sender, e);
+                    studentControl.ClearControls();
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -120,6 +129,20 @@ namespace AccessDatabase
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+        }
+
+        private void dgvDatabase_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && flpInputs.Controls[0] is TStudents studentControl)
+            {
+                DataGridViewRow row = dgvDatabase.Rows[e.RowIndex];
+
+                studentControl.StudentID = row.Cells["StudentID"].Value.ToString();
+                studentControl.LastName = row.Cells["LastName"].Value.ToString();
+                studentControl.FirstName = row.Cells["FirstName"].Value.ToString();
+                studentControl.Course = row.Cells["Course"].Value.ToString();
+                studentControl.YearLevel = row.Cells["YearLevel"].Value.ToString();
+            }
         }
     }
 }

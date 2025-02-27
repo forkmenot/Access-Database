@@ -44,7 +44,7 @@
             btnInsert = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
-            flpInformation = new FlowLayoutPanel();
+            flpInputs = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgvDatabase).BeginInit();
             mstrpFile.SuspendLayout();
             SuspendLayout();
@@ -62,6 +62,7 @@
             dgvDatabase.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDatabase.Size = new Size(1018, 455);
             dgvDatabase.TabIndex = 0;
+            dgvDatabase.CellClick += dgvDatabase_CellClick;
             // 
             // panelDGV
             // 
@@ -153,10 +154,10 @@
             // 
             btnConnection.BackColor = Color.FromArgb(255, 18, 79);
             btnConnection.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConnection.Location = new Point(874, 511);
+            btnConnection.Location = new Point(848, 511);
             btnConnection.Name = "btnConnection";
             btnConnection.Padding = new Padding(5);
-            btnConnection.Size = new Size(160, 40);
+            btnConnection.Size = new Size(186, 40);
             btnConnection.TabIndex = 4;
             btnConnection.Text = "CONNECTION TEST";
             btnConnection.UseVisualStyleBackColor = false;
@@ -166,10 +167,10 @@
             // 
             btnInsert.BackColor = Color.FromArgb(255, 0, 160);
             btnInsert.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInsert.Location = new Point(874, 583);
+            btnInsert.Location = new Point(848, 563);
             btnInsert.Name = "btnInsert";
             btnInsert.Padding = new Padding(5);
-            btnInsert.Size = new Size(160, 40);
+            btnInsert.Size = new Size(90, 73);
             btnInsert.TabIndex = 5;
             btnInsert.Text = "INSERT";
             btnInsert.UseVisualStyleBackColor = false;
@@ -179,10 +180,10 @@
             // 
             btnDelete.BackColor = Color.FromArgb(255, 0, 160);
             btnDelete.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDelete.Location = new Point(874, 629);
+            btnDelete.Location = new Point(944, 563);
             btnDelete.Name = "btnDelete";
             btnDelete.Padding = new Padding(5);
-            btnDelete.Size = new Size(160, 40);
+            btnDelete.Size = new Size(90, 73);
             btnDelete.TabIndex = 6;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = false;
@@ -192,21 +193,21 @@
             // 
             btnUpdate.BackColor = Color.FromArgb(255, 0, 160);
             btnUpdate.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUpdate.Location = new Point(874, 675);
+            btnUpdate.Location = new Point(848, 642);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Padding = new Padding(5);
-            btnUpdate.Size = new Size(160, 40);
+            btnUpdate.Size = new Size(186, 73);
             btnUpdate.TabIndex = 7;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // flpInformation
+            // flpInputs
             // 
-            flpInformation.Location = new Point(8, 511);
-            flpInformation.Name = "flpInformation";
-            flpInformation.Size = new Size(860, 204);
-            flpInformation.TabIndex = 8;
+            flpInputs.Location = new Point(8, 511);
+            flpInputs.Name = "flpInputs";
+            flpInputs.Size = new Size(834, 204);
+            flpInputs.TabIndex = 8;
             // 
             // AccessDatabase
             // 
@@ -214,7 +215,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 4, 88);
             ClientSize = new Size(1042, 727);
-            Controls.Add(flpInformation);
+            Controls.Add(flpInputs);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnInsert);
@@ -249,6 +250,6 @@
         private Button btnInsert;
         private Button btnDelete;
         private Button btnUpdate;
-        private FlowLayoutPanel flpInformation;
+        private FlowLayoutPanel flpInputs;
     }
 }
