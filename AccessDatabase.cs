@@ -35,8 +35,6 @@ namespace AccessDatabase
 
         private void loadTStudents_Click(object sender, EventArgs e)
         {
-            flpInputs.Visible = true;
-
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             da = new OleDbDataAdapter("SELECT * FROM Student", myConn);
             ds = new DataSet();
@@ -46,12 +44,11 @@ namespace AccessDatabase
 
             flpInputs.Controls.Clear();
             flpInputs.Controls.Add(new TStudents());
+            flpInputs.Visible = true;
         }
 
         private void loadTSubjects_Click(object sender, EventArgs e)
         {
-            flpInputs.Visible = true;
-
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             da = new OleDbDataAdapter("SELECT * FROM SubjectsEnrolled", myConn);
             ds = new DataSet();
@@ -61,12 +58,11 @@ namespace AccessDatabase
 
             flpInputs.Controls.Clear();
             flpInputs.Controls.Add(new TSubjects());
+            flpInputs.Visible = true;
         }
 
         private void loadTGrades_Click(object sender, EventArgs e)
         {
-            flpInputs.Visible = true;
-
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             da = new OleDbDataAdapter("SELECT * FROM FinalGrade", myConn);
             ds = new DataSet();
@@ -76,12 +72,11 @@ namespace AccessDatabase
 
             flpInputs.Controls.Clear();
             flpInputs.Controls.Add(new TGrades());
+            flpInputs.Visible = true;
         }
 
         private void loadQSubjects_Click(object sender, EventArgs e)
         {
-            flpInputs.Visible = false;
-
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              SubjectsEnrolled.CourseNum1, SubjectsEnrolled.CourseNum2, SubjectsEnrolled.CourseNum3, SubjectsEnrolled.CourseNum4, SubjectsEnrolled.CourseNum5 
@@ -91,12 +86,12 @@ namespace AccessDatabase
             da.Fill(ds, "StudentSubjects");
             dgvDatabase.DataSource = ds.Tables["StudentSubjects"];
             myConn.Close();
+
+            flpInputs.Visible = false;
         }
 
         private void loadQGrades_Click(object sender, EventArgs e)
         {
-            flpInputs.Visible = false;
-
             myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              FinalGrade.FG1, FinalGrade.FG2, FinalGrade.FG3, FinalGrade.FG4, FinalGrade.FG5 
@@ -107,6 +102,8 @@ namespace AccessDatabase
             da.Fill(ds, "StudentGrades");
             dgvDatabase.DataSource = ds.Tables["StudentGrades"];
             myConn.Close();
+
+            flpInputs.Visible = false;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
