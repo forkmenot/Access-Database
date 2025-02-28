@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TStudents));
             lblID = new Label();
             lblLN = new Label();
             lblFN = new Label();
@@ -38,6 +39,7 @@
             tbxFirstName = new TextBox();
             tbxCourse = new TextBox();
             tbxYearLevel = new TextBox();
+            btnProfile = new Button();
             SuspendLayout();
             // 
             // lblID
@@ -45,7 +47,7 @@
             lblID.AutoSize = true;
             lblID.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblID.ForeColor = Color.White;
-            lblID.Location = new Point(24, 39);
+            lblID.Location = new Point(219, 30);
             lblID.Name = "lblID";
             lblID.Size = new Size(87, 20);
             lblID.TabIndex = 0;
@@ -56,7 +58,7 @@
             lblLN.AutoSize = true;
             lblLN.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblLN.ForeColor = Color.White;
-            lblLN.Location = new Point(24, 104);
+            lblLN.Location = new Point(219, 120);
             lblLN.Name = "lblLN";
             lblLN.Size = new Size(85, 20);
             lblLN.TabIndex = 1;
@@ -67,7 +69,7 @@
             lblFN.AutoSize = true;
             lblFN.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblFN.ForeColor = Color.White;
-            lblFN.Location = new Point(24, 139);
+            lblFN.Location = new Point(219, 155);
             lblFN.Name = "lblFN";
             lblFN.Size = new Size(89, 20);
             lblFN.TabIndex = 2;
@@ -78,7 +80,7 @@
             lblC.AutoSize = true;
             lblC.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lblC.ForeColor = Color.White;
-            lblC.Location = new Point(362, 104);
+            lblC.Location = new Point(501, 120);
             lblC.Name = "lblC";
             lblC.Size = new Size(64, 20);
             lblC.TabIndex = 3;
@@ -89,7 +91,7 @@
             lnYL.AutoSize = true;
             lnYL.Font = new Font("Arial Narrow", 12F, FontStyle.Bold);
             lnYL.ForeColor = Color.White;
-            lnYL.Location = new Point(362, 139);
+            lnYL.Location = new Point(501, 155);
             lnYL.Name = "lnYL";
             lnYL.Size = new Size(91, 20);
             lnYL.TabIndex = 4;
@@ -98,7 +100,7 @@
             // tbxStudentID
             // 
             tbxStudentID.Font = new Font("Arial Narrow", 12F);
-            tbxStudentID.Location = new Point(122, 36);
+            tbxStudentID.Location = new Point(317, 27);
             tbxStudentID.Name = "tbxStudentID";
             tbxStudentID.Size = new Size(156, 26);
             tbxStudentID.TabIndex = 5;
@@ -106,7 +108,7 @@
             // tbxLastName
             // 
             tbxLastName.Font = new Font("Arial Narrow", 12F);
-            tbxLastName.Location = new Point(122, 101);
+            tbxLastName.Location = new Point(317, 117);
             tbxLastName.Name = "tbxLastName";
             tbxLastName.Size = new Size(156, 26);
             tbxLastName.TabIndex = 6;
@@ -114,7 +116,7 @@
             // tbxFirstName
             // 
             tbxFirstName.Font = new Font("Arial Narrow", 12F);
-            tbxFirstName.Location = new Point(122, 136);
+            tbxFirstName.Location = new Point(317, 152);
             tbxFirstName.Name = "tbxFirstName";
             tbxFirstName.Size = new Size(156, 26);
             tbxFirstName.TabIndex = 7;
@@ -122,7 +124,7 @@
             // tbxCourse
             // 
             tbxCourse.Font = new Font("Arial Narrow", 12F);
-            tbxCourse.Location = new Point(460, 101);
+            tbxCourse.Location = new Point(599, 117);
             tbxCourse.Name = "tbxCourse";
             tbxCourse.Size = new Size(156, 26);
             tbxCourse.TabIndex = 8;
@@ -130,16 +132,27 @@
             // tbxYearLevel
             // 
             tbxYearLevel.Font = new Font("Arial Narrow", 12F);
-            tbxYearLevel.Location = new Point(460, 136);
+            tbxYearLevel.Location = new Point(599, 152);
             tbxYearLevel.Name = "tbxYearLevel";
             tbxYearLevel.Size = new Size(156, 26);
             tbxYearLevel.TabIndex = 9;
+            // 
+            // btnProfile
+            // 
+            btnProfile.FlatStyle = FlatStyle.Flat;
+            btnProfile.Image = (Image)resources.GetObject("btnProfile.Image");
+            btnProfile.Location = new Point(10, 12);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(180, 180);
+            btnProfile.TabIndex = 14;
+            btnProfile.UseVisualStyleBackColor = true;
             // 
             // TStudents
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 4, 88);
+            Controls.Add(btnProfile);
             Controls.Add(tbxYearLevel);
             Controls.Add(tbxCourse);
             Controls.Add(tbxFirstName);
@@ -168,5 +181,6 @@
         private TextBox tbxFirstName;
         private TextBox tbxCourse;
         private TextBox tbxYearLevel;
+        private Button btnProfile;
     }
 }

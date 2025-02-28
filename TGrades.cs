@@ -15,6 +15,10 @@ namespace AccessDatabase
         public TGrades()
         {
             InitializeComponent();
+
+            btnProfile.FlatStyle = FlatStyle.Flat;
+            btnProfile.FlatAppearance.BorderColor = Color.White;
+            btnProfile.FlatAppearance.BorderSize = 3;
         }
 
         public string StudentID { get => tbxStudentID.Text; set => tbxStudentID.Text = value; }
