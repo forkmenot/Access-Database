@@ -45,6 +45,9 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             flpInputs = new FlowLayoutPanel();
+            save = new ToolStripMenuItem();
+            saveTables = new ToolStripMenuItem();
+            saveQueries = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvDatabase).BeginInit();
             mstrpFile.SuspendLayout();
             SuspendLayout();
@@ -87,7 +90,7 @@
             // 
             // loadToolStripMenuItem
             // 
-            loadToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { load });
+            loadToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { load, save });
             loadToolStripMenuItem.Font = new Font("Arial Narrow", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             loadToolStripMenuItem.Size = new Size(50, 24);
@@ -98,34 +101,34 @@
             load.DropDownItems.AddRange(new ToolStripItem[] { loadTable, loadQuery });
             load.Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             load.Name = "load";
-            load.Size = new Size(108, 24);
+            load.Size = new Size(180, 24);
             load.Text = "Load";
             // 
             // loadTable
             // 
             loadTable.DropDownItems.AddRange(new ToolStripItem[] { loadTStudents, loadTSubjects, loadTGrades });
             loadTable.Name = "loadTable";
-            loadTable.Size = new Size(114, 24);
+            loadTable.Size = new Size(180, 24);
             loadTable.Text = "Table";
             // 
             // loadTStudents
             // 
             loadTStudents.Name = "loadTStudents";
-            loadTStudents.Size = new Size(130, 24);
+            loadTStudents.Size = new Size(180, 24);
             loadTStudents.Text = "Students";
             loadTStudents.Click += loadTStudents_Click;
             // 
             // loadTSubjects
             // 
             loadTSubjects.Name = "loadTSubjects";
-            loadTSubjects.Size = new Size(130, 24);
+            loadTSubjects.Size = new Size(180, 24);
             loadTSubjects.Text = "Subjects";
             loadTSubjects.Click += loadTSubjects_Click;
             // 
             // loadTGrades
             // 
             loadTGrades.Name = "loadTGrades";
-            loadTGrades.Size = new Size(130, 24);
+            loadTGrades.Size = new Size(180, 24);
             loadTGrades.Text = "Grades";
             loadTGrades.Click += loadTGrades_Click;
             // 
@@ -133,7 +136,7 @@
             // 
             loadQuery.DropDownItems.AddRange(new ToolStripItem[] { loadQSubjects, loadQGrades });
             loadQuery.Name = "loadQuery";
-            loadQuery.Size = new Size(114, 24);
+            loadQuery.Size = new Size(180, 24);
             loadQuery.Text = "Query";
             // 
             // loadQSubjects
@@ -209,6 +212,28 @@
             flpInputs.Size = new Size(834, 204);
             flpInputs.TabIndex = 8;
             // 
+            // save
+            // 
+            save.DropDownItems.AddRange(new ToolStripItem[] { saveTables, saveQueries });
+            save.Font = new Font("Arial Narrow", 12F);
+            save.Name = "save";
+            save.Size = new Size(180, 24);
+            save.Text = "Save";
+            // 
+            // saveTables
+            // 
+            saveTables.Name = "saveTables";
+            saveTables.Size = new Size(180, 24);
+            saveTables.Text = "Tables";
+            saveTables.Click += saveTables_Click;
+            // 
+            // saveQueries
+            // 
+            saveQueries.Name = "saveQueries";
+            saveQueries.Size = new Size(180, 24);
+            saveQueries.Text = "Queries";
+            saveQueries.Click += saveQueries_Click;
+            // 
             // AccessDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -251,5 +276,8 @@
         private Button btnDelete;
         private Button btnUpdate;
         private FlowLayoutPanel flpInputs;
+        private ToolStripMenuItem save;
+        private ToolStripMenuItem saveTables;
+        private ToolStripMenuItem saveQueries;
     }
 }

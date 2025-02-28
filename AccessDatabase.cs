@@ -346,5 +346,15 @@ namespace AccessDatabase
                 gradeControl.FinalGrade5 = row.Cells["FG5"].Value.ToString();
             }
         }
+
+        private void saveTables_Click(object sender, EventArgs e)
+        {
+            // save tables Student, SubjectsEnrolled and FinalGrade altogether in 1 PDF
+        }
+
+        private void saveQueries_Click(object sender, EventArgs e)
+        {
+            // save queries StudentSubjects and Student Grades altogether in 1 PDF
+        }
     }
 }
