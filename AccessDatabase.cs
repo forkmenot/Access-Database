@@ -440,7 +440,7 @@ namespace AccessDatabase
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                saveRecordsPDF(ds.Tables["Student"], saveFileDialog.FileName, "STUDENT RECORDS");
+                saveRecordsPDF(ds.Tables["Student"], saveFileDialog.FileName, "STUDENTS RECORD");
                 MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -474,7 +474,7 @@ namespace AccessDatabase
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                saveRecordsPDF(ds.Tables["SubjectsEnrolled"], saveFileDialog.FileName, "SUBJECT RECORDS");
+                saveRecordsPDF(ds.Tables["SubjectsEnrolled"], saveFileDialog.FileName, "SUBJECTS RECORD");
                 MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -508,7 +508,7 @@ namespace AccessDatabase
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                saveRecordsPDF(ds.Tables["FinalGrade"], saveFileDialog.FileName, "GRADE RECORDS");
+                saveRecordsPDF(ds.Tables["FinalGrade"], saveFileDialog.FileName, "GRADES RECORD");
                 MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -542,7 +542,7 @@ namespace AccessDatabase
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                saveRecordsPDF(ds.Tables["StudentSubjects"], saveFileDialog.FileName, "STUDENT SUBJECT RECORDS");
+                saveRecordsPDF(ds.Tables["StudentSubjects"], saveFileDialog.FileName, "STUDENT SUBJECTS RECORD");
                 MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -576,7 +576,7 @@ namespace AccessDatabase
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                saveRecordsPDF(ds.Tables["StudentGrades"], saveFileDialog.FileName, "STUDENT GRADE RECORDS");
+                saveRecordsPDF(ds.Tables["StudentGrades"], saveFileDialog.FileName, "STUDENT GRADES RECORD");
                 MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
