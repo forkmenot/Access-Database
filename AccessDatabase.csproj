@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="itext7" Version="9.1.0" />
+    <PackageReference Include="PDFsharp" Version="6.1.1" />
+    <PackageReference Include="PDFsharp-MigraDoc" Version="6.1.1" />
     <PackageReference Include="System.Data.OleDb" Version="9.0.2" />
   </ItemGroup>
 

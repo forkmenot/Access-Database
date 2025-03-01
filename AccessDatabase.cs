@@ -2,6 +2,10 @@ using System.Data.OleDb;
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
+using PdfSharp.Pdf;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.Rendering;
 
 namespace AccessDatabase
 {
@@ -13,6 +17,8 @@ namespace AccessDatabase
         DataSet? ds;
         int indexRow;
 
+        private string connection = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb";
+
         public AccessDatabase()
         {
             InitializeComponent();
@@ -20,22 +26,22 @@ namespace AccessDatabase
 
         private void AccessDatabase_Load(object sender, EventArgs e)
         {
-            dgvDatabase.DefaultCellStyle.Font = new Font("Arial Narrow", 12F, FontStyle.Regular);
-            dgvDatabase.ColumnHeadersDefaultCellStyle.Font = new Font("Arial Narrow", 12F, FontStyle.Regular);
+            dgvDatabase.DefaultCellStyle.Font = new System.Drawing.Font("Arial Narrow", 12F, FontStyle.Regular);
+            dgvDatabase.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial Narrow", 12F, FontStyle.Regular);
         }
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
             ds = new DataSet();
             myConn.Open();
-            MessageBox.Show("Connected successfully!");
+            MessageBox.Show("Connected successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             myConn.Close();
         }
 
         private void loadTStudents_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
             da = new OleDbDataAdapter("SELECT * FROM Student", myConn);
             ds = new DataSet();
             da.Fill(ds, "Student");
@@ -49,7 +55,7 @@ namespace AccessDatabase
 
         private void loadTSubjects_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
             da = new OleDbDataAdapter("SELECT * FROM SubjectsEnrolled", myConn);
             ds = new DataSet();
             da.Fill(ds, "SubjectsEnrolled");
@@ -63,7 +69,7 @@ namespace AccessDatabase
 
         private void loadTGrades_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
             da = new OleDbDataAdapter("SELECT * FROM FinalGrade", myConn);
             ds = new DataSet();
             da.Fill(ds, "FinalGrade");
@@ -77,7 +83,7 @@ namespace AccessDatabase
 
         private void loadQSubjects_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              SubjectsEnrolled.CourseNum1, SubjectsEnrolled.CourseNum2, SubjectsEnrolled.CourseNum3, SubjectsEnrolled.CourseNum4, SubjectsEnrolled.CourseNum5 
                              FROM Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID";
@@ -92,7 +98,7 @@ namespace AccessDatabase
 
         private void loadQGrades_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
             string query = @"SELECT Student.StudentID, Student.LastName, Student.FirstName, 
                              FinalGrade.FG1, FinalGrade.FG2, FinalGrade.FG3, FinalGrade.FG4, FinalGrade.FG5 
                              FROM (Student INNER JOIN SubjectsEnrolled ON Student.StudentID = SubjectsEnrolled.StudentID) 
@@ -108,7 +114,7 @@ namespace AccessDatabase
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
@@ -126,7 +132,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Student record inserted!");
+                    MessageBox.Show("Student record inserted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTStudents_Click(sender, e);
                     studentControl.ClearControls();
                 }
@@ -148,7 +154,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Subject record inserted!");
+                    MessageBox.Show("Subject record inserted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTSubjects_Click(sender, e);
                     subjectControl.ClearControls();
                 }
@@ -170,7 +176,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Grade record inserted!");
+                    MessageBox.Show("Grade record inserted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTGrades_Click(sender, e);
                     gradeControl.ClearControls();
                 }
@@ -179,7 +185,7 @@ namespace AccessDatabase
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
@@ -197,7 +203,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Student record updated!");
+                    MessageBox.Show("Student record updated!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTStudents_Click(sender, e);
                 }
             }
@@ -218,7 +224,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Subject record updated!");
+                    MessageBox.Show("Subject record updated!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTSubjects_Click(sender, e);
                 }
             }
@@ -239,7 +245,7 @@ namespace AccessDatabase
                     cmd.ExecuteNonQuery();
                     myConn.Close();
 
-                    MessageBox.Show("Grade record updated!");
+                    MessageBox.Show("Grade record updated!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadTGrades_Click(sender, e);
                 }
             }
@@ -247,7 +253,7 @@ namespace AccessDatabase
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            myConn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb");
+            myConn = new OleDbConnection(connection);
 
             if (flpInputs.Controls[0] is TStudents studentControl)
             {
@@ -263,7 +269,7 @@ namespace AccessDatabase
                         cmd.ExecuteNonQuery();
                         myConn.Close();
 
-                        MessageBox.Show("Student record deleted!");
+                        MessageBox.Show("Student record deleted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadTStudents_Click(sender, e);
                         studentControl.ClearControls();
                     }
@@ -283,7 +289,7 @@ namespace AccessDatabase
                         cmd.ExecuteNonQuery();
                         myConn.Close();
 
-                        MessageBox.Show("Subject record deleted!");
+                        MessageBox.Show("Subject record deleted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadTSubjects_Click(sender, e);
                         subjectControl.ClearControls();
                     }
@@ -303,7 +309,7 @@ namespace AccessDatabase
                         cmd.ExecuteNonQuery();
                         myConn.Close();
 
-                        MessageBox.Show("Grade record deleted!");
+                        MessageBox.Show("Grade record deleted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadTGrades_Click(sender, e);
                         gradeControl.ClearControls();
                     }
@@ -347,14 +353,166 @@ namespace AccessDatabase
             }
         }
 
-        private void saveTables_Click(object sender, EventArgs e)
+        private void saveRecordsPDF(DataTable dataTable, string filePath, string title)
         {
-            // save tables Student, SubjectsEnrolled and FinalGrade altogether in 1 PDF
+            if (dataTable == null || dataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("No records to export.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Document document = new Document();
+            Section section = document.AddSection();
+
+            section.PageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Landscape;
+
+            Paragraph titleParagraph = section.AddParagraph(title);
+            titleParagraph.Format.Font.Size = 16;
+            titleParagraph.Format.Font.Bold = true;
+            titleParagraph.Format.Alignment = ParagraphAlignment.Center;
+            titleParagraph.Format.SpaceAfter = "12pt";
+
+            Table table = section.AddTable();
+            table.Borders.Width = 0.75;
+            table.Borders.Color = Colors.Black;
+
+            double columnWidth = 25.0 / dataTable.Columns.Count;
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                Column col = table.AddColumn(Unit.FromCentimeter(columnWidth));
+                col.Format.Alignment = ParagraphAlignment.Center;
+            }
+
+            Row headerRow = table.AddRow();
+            headerRow.Shading.Color = Colors.LightGray;
+            headerRow.HeadingFormat = true;
+            headerRow.Format.Font.Bold = true;
+            headerRow.Format.Font.Size = 12;
+
+            for (int i = 0; i < dataTable.Columns.Count; i++)
+            {
+                headerRow.Cells[i].AddParagraph(dataTable.Columns[i].ColumnName);
+                headerRow.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+            }
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Row dataRow = table.AddRow();
+                dataRow.Format.Font.Size = 12;
+
+                for (int i = 0; i < dataTable.Columns.Count; i++)
+                {
+                    dataRow.Cells[i].AddParagraph(row[i].ToString());
+                    dataRow.Cells[i].Format.Alignment = ParagraphAlignment.Left;
+                }
+            }
+
+            PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true);
+            pdfRenderer.Document = document;
+            pdfRenderer.RenderDocument();
+            pdfRenderer.PdfDocument.Save(filePath);
         }
 
-        private void saveQueries_Click(object sender, EventArgs e)
+        private void saveTStudents_Click(object sender, EventArgs e)
         {
-            // save queries StudentSubjects and Student Grades altogether in 1 PDF
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
+
+            saveFileDialog.FilterIndex = 13;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                saveRecordsPDF(ds.Tables["Student"], saveFileDialog.FileName, "STUDENT RECORDS");
+                MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void saveTSubjects_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
+
+            saveFileDialog.FilterIndex = 13;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                saveRecordsPDF(ds.Tables["SubjectsEnrolled"], saveFileDialog.FileName, "SUBJECT RECORDS");
+                MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void saveTGrades_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
+
+            saveFileDialog.FilterIndex = 13;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                saveRecordsPDF(ds.Tables["FinalGrade"], saveFileDialog.FileName, "GRADE RECORDS");
+                MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

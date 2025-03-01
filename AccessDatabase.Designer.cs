@@ -40,14 +40,19 @@
             loadQuery = new ToolStripMenuItem();
             loadQSubjects = new ToolStripMenuItem();
             loadQGrades = new ToolStripMenuItem();
+            save = new ToolStripMenuItem();
+            saveTables = new ToolStripMenuItem();
+            saveTStudents = new ToolStripMenuItem();
+            saveTSubjects = new ToolStripMenuItem();
+            saveTGrades = new ToolStripMenuItem();
+            saveQueries = new ToolStripMenuItem();
+            saveQSubjects = new ToolStripMenuItem();
+            saveQGrades = new ToolStripMenuItem();
             btnConnection = new Button();
             btnInsert = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
             flpInputs = new FlowLayoutPanel();
-            save = new ToolStripMenuItem();
-            saveTables = new ToolStripMenuItem();
-            saveQueries = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvDatabase).BeginInit();
             mstrpFile.SuspendLayout();
             SuspendLayout();
@@ -108,27 +113,27 @@
             // 
             loadTable.DropDownItems.AddRange(new ToolStripItem[] { loadTStudents, loadTSubjects, loadTGrades });
             loadTable.Name = "loadTable";
-            loadTable.Size = new Size(180, 24);
+            loadTable.Size = new Size(114, 24);
             loadTable.Text = "Table";
             // 
             // loadTStudents
             // 
             loadTStudents.Name = "loadTStudents";
-            loadTStudents.Size = new Size(180, 24);
+            loadTStudents.Size = new Size(130, 24);
             loadTStudents.Text = "Students";
             loadTStudents.Click += loadTStudents_Click;
             // 
             // loadTSubjects
             // 
             loadTSubjects.Name = "loadTSubjects";
-            loadTSubjects.Size = new Size(180, 24);
+            loadTSubjects.Size = new Size(130, 24);
             loadTSubjects.Text = "Subjects";
             loadTSubjects.Click += loadTSubjects_Click;
             // 
             // loadTGrades
             // 
             loadTGrades.Name = "loadTGrades";
-            loadTGrades.Size = new Size(180, 24);
+            loadTGrades.Size = new Size(130, 24);
             loadTGrades.Text = "Grades";
             loadTGrades.Click += loadTGrades_Click;
             // 
@@ -136,22 +141,77 @@
             // 
             loadQuery.DropDownItems.AddRange(new ToolStripItem[] { loadQSubjects, loadQGrades });
             loadQuery.Name = "loadQuery";
-            loadQuery.Size = new Size(180, 24);
+            loadQuery.Size = new Size(114, 24);
             loadQuery.Text = "Query";
             // 
             // loadQSubjects
             // 
             loadQSubjects.Name = "loadQSubjects";
-            loadQSubjects.Size = new Size(130, 24);
-            loadQSubjects.Text = "Subjects";
+            loadQSubjects.Size = new Size(179, 24);
+            loadQSubjects.Text = "Student Subjects";
             loadQSubjects.Click += loadQSubjects_Click;
             // 
             // loadQGrades
             // 
             loadQGrades.Name = "loadQGrades";
-            loadQGrades.Size = new Size(130, 24);
-            loadQGrades.Text = "Grades";
+            loadQGrades.Size = new Size(179, 24);
+            loadQGrades.Text = "Student Grades";
             loadQGrades.Click += loadQGrades_Click;
+            // 
+            // save
+            // 
+            save.DropDownItems.AddRange(new ToolStripItem[] { saveTables, saveQueries });
+            save.Font = new Font("Arial Narrow", 12F);
+            save.Name = "save";
+            save.Size = new Size(180, 24);
+            save.Text = "Save";
+            // 
+            // saveTables
+            // 
+            saveTables.DropDownItems.AddRange(new ToolStripItem[] { saveTStudents, saveTSubjects, saveTGrades });
+            saveTables.Name = "saveTables";
+            saveTables.Size = new Size(180, 24);
+            saveTables.Text = "Table";
+            // 
+            // saveTStudents
+            // 
+            saveTStudents.Name = "saveTStudents";
+            saveTStudents.Size = new Size(180, 24);
+            saveTStudents.Text = "Students";
+            saveTStudents.Click += saveTStudents_Click;
+            // 
+            // saveTSubjects
+            // 
+            saveTSubjects.Name = "saveTSubjects";
+            saveTSubjects.Size = new Size(180, 24);
+            saveTSubjects.Text = "Subjects";
+            saveTSubjects.Click += saveTSubjects_Click;
+            // 
+            // saveTGrades
+            // 
+            saveTGrades.Name = "saveTGrades";
+            saveTGrades.Size = new Size(180, 24);
+            saveTGrades.Text = "Grades";
+            saveTGrades.Click += saveTGrades_Click;
+            // 
+            // saveQueries
+            // 
+            saveQueries.DropDownItems.AddRange(new ToolStripItem[] { saveQSubjects, saveQGrades });
+            saveQueries.Name = "saveQueries";
+            saveQueries.Size = new Size(180, 24);
+            saveQueries.Text = "Query";
+            // 
+            // saveQSubjects
+            // 
+            saveQSubjects.Name = "saveQSubjects";
+            saveQSubjects.Size = new Size(179, 24);
+            saveQSubjects.Text = "Student Subjects";
+            // 
+            // saveQGrades
+            // 
+            saveQGrades.Name = "saveQGrades";
+            saveQGrades.Size = new Size(179, 24);
+            saveQGrades.Text = "Student Grades";
             // 
             // btnConnection
             // 
@@ -212,28 +272,6 @@
             flpInputs.Size = new Size(834, 204);
             flpInputs.TabIndex = 8;
             // 
-            // save
-            // 
-            save.DropDownItems.AddRange(new ToolStripItem[] { saveTables, saveQueries });
-            save.Font = new Font("Arial Narrow", 12F);
-            save.Name = "save";
-            save.Size = new Size(180, 24);
-            save.Text = "Save";
-            // 
-            // saveTables
-            // 
-            saveTables.Name = "saveTables";
-            saveTables.Size = new Size(180, 24);
-            saveTables.Text = "Tables";
-            saveTables.Click += saveTables_Click;
-            // 
-            // saveQueries
-            // 
-            saveQueries.Name = "saveQueries";
-            saveQueries.Size = new Size(180, 24);
-            saveQueries.Text = "Queries";
-            saveQueries.Click += saveQueries_Click;
-            // 
             // AccessDatabase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -279,5 +317,10 @@
         private ToolStripMenuItem save;
         private ToolStripMenuItem saveTables;
         private ToolStripMenuItem saveQueries;
+        private ToolStripMenuItem saveTStudents;
+        private ToolStripMenuItem saveTSubjects;
+        private ToolStripMenuItem saveTGrades;
+        private ToolStripMenuItem saveQSubjects;
+        private ToolStripMenuItem saveQGrades;
     }
 }
