@@ -204,14 +204,16 @@
             // saveQSubjects
             // 
             saveQSubjects.Name = "saveQSubjects";
-            saveQSubjects.Size = new Size(179, 24);
+            saveQSubjects.Size = new Size(180, 24);
             saveQSubjects.Text = "Student Subjects";
+            saveQSubjects.Click += saveQSubjects_Click;
             // 
             // saveQGrades
             // 
             saveQGrades.Name = "saveQGrades";
-            saveQGrades.Size = new Size(179, 24);
+            saveQGrades.Size = new Size(180, 24);
             saveQGrades.Text = "Student Grades";
+            saveQGrades.Click += saveQGrades_Click;
             // 
             // btnConnection
             // 

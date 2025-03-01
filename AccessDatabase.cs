@@ -514,5 +514,73 @@ namespace AccessDatabase
                 MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void saveQSubjects_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
+
+            saveFileDialog.FilterIndex = 13;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                saveRecordsPDF(ds.Tables["StudentSubjects"], saveFileDialog.FileName, "STUDENT SUBJECT RECORDS");
+                MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void saveQGrades_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter =
+                "XLS (*.xls)|*.xls|" +
+                "XLT (*.xlt)|*.xlt|" +
+                "XLSX (*.xlsx)|*.xlsx|" +
+                "XLSM (*.xlsm)|*.xlsm|" +
+                "XLTX (*.xltx)|*.xltx|" +
+                "XLTM (*.xltm)|*.xltm|" +
+                "ODS (*.ods)|*.ods|" +
+                "OTS (*.ots)|*.ots|" +
+                "CSV (*.csv)|*.csv|" +
+                "TSV (*.tsv)|*.tsv|" +
+                "HTML (*.html)|*.html|" +
+                "MHTML (*.mhtml)|*.mhtml|" +
+                "PDF (*.pdf)|*.pdf|" +
+                "XPS (*.xps)|*.xps|" +
+                "BMP (*.bmp)|*.bmp|" +
+                "GIF (*.gif)|*.gif|" +
+                "JPEG (*.jpg)|*.jpg|" +
+                "PNG (*.png)|*.png|" +
+                "TIFF (*.tif)|*.tif|" +
+                "WMP (*.wdp)|*.wdp";
+
+            saveFileDialog.FilterIndex = 13;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                saveRecordsPDF(ds.Tables["StudentGrades"], saveFileDialog.FileName, "STUDENT GRADE RECORDS");
+                MessageBox.Show("Records saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
