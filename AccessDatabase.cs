@@ -15,7 +15,6 @@ namespace AccessDatabase
         OleDbDataAdapter? da;
         OleDbCommand? cmd;
         DataSet? ds;
-        int indexRow;
 
         private string connection = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\AccessDatabase\\SchoolDatabase.accdb";
 
